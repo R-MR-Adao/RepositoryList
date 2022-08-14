@@ -1,9 +1,9 @@
 [submodule "WaveBox_O-FDTD"]
-	path = WaveBox_O-FDTD
+	path = WaveBox_O-FDTD (private)
 	url = https://github.com/R-MR-Adao/WaveBox_O-FDTD.git
 [submodule "designer3D_TPP"]
-	path = designer3D_TPP
+	path = designer3D_TPP (private)
 	url = https://github.com/R-MR-Adao/designer3D_TPP.git
 [submodule "NanoPhotonicsToolbox"]
-	path = NanoPhotonicsToolbox
+	path = NanoPhotonicsToolbox (private)
 	url = https://github.com/R-MR-Adao/NanoPhotonicsToolbox.git
