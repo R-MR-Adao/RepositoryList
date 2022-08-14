@@ -108,10 +108,9 @@ Example of confocal z-stacking (obtained using an additional pinhole in the dete
 
 ## How to setup
 
-### MATLAB
 The toolbox is implemented as a series of `.m` scripts, so there is no installation step needed. All you have to do is point MATLAB to the srouce code directory:
 - Open the Home tab of MATLAB's IDE
-- Press "Set PAth" &rarr
+- Press "Set path"
 - Press "Add with Subfolders"
 - Select all folders except `.git`
 - Press "Save" &rarr; "Close"
@@ -281,7 +280,7 @@ Every visualization can be exported as a MATLAB figure for storage or analysis.
 
 The toolbox is implemented as a series of `.m` scripts, so there is no installation step needed. All you have to do is point MATLAB to the srouce code directory:
 - Open the Home tab of MATLAB's IDE
-- Press "Set PAth" &rarr
+- Press "Set path"
 - Press "Add with Subfolders"
 - Select all folders except `.git`
 - Press "Save" &rarr; "Close"
@@ -511,7 +510,7 @@ The right panel allows visualizing and rotating the 3D design, splitting the des
 ### MATLAB
 The toolbox is implemented as a series of `.m` scripts, so there is no installation step needed. All you have to do is point MATLAB to the srouce code directory:
 - Open the Home tab of MATLAB's IDE
-- Press "Set PAth" &rarr
+- Press "Set path"
 - Press "Add with Subfolders"
 - Select all folders except `.git`
 - Press "Save" &rarr; "Close"
