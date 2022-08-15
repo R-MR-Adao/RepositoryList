@@ -1,12 +1,10 @@
 # RepositoryList
 A public list of my private repositories. If you would like to get access to any of them, please contact me.
 <p align="center">
-<img src="https://user-images.githubusercontent.com/111191306/184558142-2f895d70-276f-4ec7-ae59-7171a51041e9.gif">
+<img src="https://user-images.githubusercontent.com/111191306/184611508-4ac38e85-7886-4444-805b-324178eeb083.gif">
 </p>
 
 This public repository was created as a sharable list of my repositories, here added as clickable submodules. Due to Intellectual Property issues, I cannot publicly share some of those repositoies, so I kindly ask you to contact me if you would like to access any of the private ones:
-
-Email: rm.ribeiro.adao@gmail.com
 
 LindeIn: https://www.linkedin.com/in/rmradao/
 
