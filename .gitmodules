@@ -2,7 +2,7 @@
 	path = (private) WaveBox_O-FDTD
 	url = https://github.com/R-MR-Adao/WaveBox_O-FDTD.git
 [submodule "designer3D_TPP"]
-	path = (private) designer3D_TPP
+	path = (private) TPP_designer3D
 	url = https://github.com/R-MR-Adao/designer3D_TPP.git
 [submodule "NanoPhotonicsToolbox"]
 	path = (private) NanoPhotonicsToolbox
@@ -10,3 +10,6 @@
 [submodule "LoRaComSensors"]
 	path = (public) LoRaComSensors
 	url = https://github.com/R-MR-Adao/LoRaComSensors.git
+[submodule "(private) TPP_RM21"]
+	path = (private) TPP_RM21
+	url = https://github.com/R-MR-Adao/TPP_RM21.git

@@ -13,7 +13,8 @@ Below you can find an overview of each repository, built from public data (eithe
 ## Table of Contents
 - [NanoPhotonicsToolbox](#nanophotonicstoolbox)
 - [WaveBox: O-FDTD](#wavebox)
-- [Designer 3D TPP](#designer-3d)
+- [TPP RM21](#tpp_rm21)
+- [TPP Designer 3D](#designer-3d)
 - [LoRaComSensors](#loracomsensors)
 
 
@@ -427,26 +428,20 @@ Partners:
 
 Budget INL: € 653, 625.00
 
+# TPP_RM21
 
-<a name="designer-3d"/>
-
-# Designer 3D TPP
 <p align="center">
-   <img src="https://user-images.githubusercontent.com/111191306/184510385-b0e6a4e9-3568-494c-a996-e6c3f66434e3.png">
+   <img src="https://user-images.githubusercontent.com/111191306/184698850-1cc8caf0-7496-4a88-b889-f8e7c4afcc92.png">
 </p>
 
-A MATLAB toolbox developed in the frame of the EU-funded FET-Open project Chip-AI (grant n. 828841), for the development of 3D optical waveguides for complexly-interconnected nano-photonic systems such as on-chip artificial neural netwaorks using femtosecond laser-based Two-Photon Polymerization (TPP).
+A Python- and Arduino-based instrumentation control software to perform Two Photon Polymerization (TPP) microprinting using the MCL optical microscope platform RM21.
+This platofm features a custom-built G-code file interpreter library, design visualization and rescaling tools, and an instrumentation control panel implemented by a basic (Tkinter) GUI. The MighTex V1.2.0 camera control software is used to visualize the sample, enabling-focus finding and live fabrication monitoring features.
 
 ## Features
-- Design 3D structures using MATLAB scripts, to ensure optimal reproducibility and control
-- User-friendly script builder GUI for less experienced MATLABers
-- Use pre-defined macros do define suppor structures with tunable geometry and mesh dimensions
-- Define new macros for your own applications
-- Break large designs into mosaic-segments according to your experimental setup requirements
-- Simulate the polymerized TPP structure depending on your material and experimental setup parameters using `voxelshape_Gauss.m`
-- Export the designs to format-customizable g-code files
-- Import designs from G-CODE files
-- Export designs to [OpenSCAD](http://https://openscad.org/ "OpenSCAD") for better 3D visualization
+- Import custom-built G-CODE designs from the TPP_designer3D tool
+- Represent and transform designs prior to fabrication
+- Move accross a sample to inspect it's contents and define the fabrication position
+- Run fabrication and monitor the progress
 
 ## Applications
 <p align="center">
@@ -480,6 +475,161 @@ A MATLAB toolbox developed in the frame of the EU-funded FET-Open project Chip-A
 <p align="center">
   Design, morphological simulation, and fabrication of $f^{cos2}_z$-parameterized waveguides with hollow support structures via Two-Photon Polymerization (TPP) 3D microprinting. (a) Structure design (writing beam path trajectories). (b) Morphological simulation using a fluence $F = 20$ mJ/cm<sup>2</sup> (per pulse) and a writing speed $v = 50$ µm/s, thus leading to an exposure dose $D = 244$ mJ/cm<sup>2</sup>. (c) Scanning Electron Microscopy (SEM) image of the fabricated structure in OrmoCore. (d) Systematic sweep over the laser fluence and writing speed, comparing the simulation (left) and experimental fabrication (right) results. The inset labels represent the exposure dose $D(F,v)$ shared by the corresponding simulation and fabrication counterparts. The colors highlight structures obtained using a similar dose.
 </p>
+
+
+## Table of Contents
+- [Graphical User Interface](#gui)
+- [Setup](#hsetup)
+  - [Software architecture $ instrumentation control](#architecture)
+  - [Optical setup](#optical-setup)
+- [How to use](#how-to-use)
+- [Publications](#publications)
+- [Funding](#funding)
+
+<a name="gui"/>
+
+## Graphical User Interface
+
+<p align=center>
+<img src="https://user-images.githubusercontent.com/111191306/184703653-b7a475d3-a9a5-45fe-99ab-e3e68aca54b9.png">
+</p>
+
+<p align=center>
+Left panel: shutter and stage control panel. Top-right: design visualization. Bottom-right: MighTex V1.2.0 camera control software for focus-finding and live fabrication monitoring.
+</p>
+
+## Setup
+
+<a name="architecture"/>
+
+### Software architecture & instrumentation control
+
+The instrumentation control system can be divided into the design software, instrument control software, and instrumentation categories. The designs are created either in commercial Computer-Aided Design (CAD) software or in the custom-built design tool `TPP_designer3D`.
+Commercial CAD software usually define solid objects that need to be processed by slicer software to generate beam trajectory coordinates. Such trajectory and associated tool operation commands are thus compiled into a list of sequential Computerized Numerical Control (CNC) operations, usually as a G-code file. Although most G-code commands are standardized, many configuration parameters are tool-specific, and most commercial slicer software resort to protocol libraries made available by the manufacturers. Examples of specific commands include the startup settings, the encoding of multiple tool functionalities, accounting for robotic arm degrees-of-freedom-related limitations, collision-avoiding routines, and the need for auxiliary support structures, to name a few. In this regard, a TPP 3D micro-printer is considerably simpler than most 3D stereolithography or machining tools since there is no direct contact between the tool (microscope objective) and the structure.
+Commercial design software have obvious advantages over custom-built ones in terms of powerful 3D design features and automatic slicing routines. However, since this work uses custom-built setup and control software, no established fabrication protocol is available in commercial software. Hence, the simplest approach is to develop a design tool that directly encodes the laser beam trajectory and a small G-code compiler adjusted to the specificities of the system.
+Regardless of the design method, the implemented control software expects a G-code file whose parameters and structure specified in `doc/RM21-TPP-FabStation-Control_Documentation.pdf`.
+The control software schematized below consists of a master Python program (`RM21_main.py`) that commands and syncs all instrumentation controllers. The main program then resorts to both commercial and custom-built Python libraries: the commercial Madlib and MicroDrive (MCL - `mcl_lib.py`) libraries control the Micro-Drive and Nano-Dive stage controllers; the custom-built G-code (`gcodeInterp.py`) and Arduino (`arduinoCom.py`) libraries implement a simple G-code interpreter and command an Arduino board for the shutter operation.
+
+For more detailed information, please refer to `doc/RM21-TPP-FabStation-Control_Documentation.pdf`.
+
+<p align=center>
+  <img width=700 src="https://user-images.githubusercontent.com/111191306/184706789-24417598-aeab-47d5-8a64-40dff1c5af62.png">
+</p>
+
+<p align=center>
+Schematic of the custom-built TPP control instrumentation and software. (a) Structure design and G-code generation. (b) Instrumentation control software: Python-based
+synced stages and shutter control. (c) Instrumentation for sample displacement and laser shutter operation.
+</p>
+
+<p align=center>
+  <img width=700 src="https://user-images.githubusercontent.com/111191306/184708227-c3b875ea-64c3-4a50-af39-e8238e512577.png">
+</p>
+
+<p align=center>
+Process flow of design file loading and execution: File loading; Design execution; Instant motion; Trajectory motion.
+</p>
+
+
+<a name="optical-setup"/>
+
+### Optical setup
+
+A custom-built DLW TPP setup illustrated below uses a femtosecond pulsed laser source
+Tsunami (Spectra Physics) tunable between $\lambda = 730 - 800$ nm, with ~80 fs pulse length.  An external two-SF10 glass prism compressor (AFS-SF10-SF10, Thorlabs) is used for pulse optimization, counteracting the dispersion of the optical components. A reflective Neutral-Density (ND) filter wheel (NDC-50C-2M, Thorlabs) is used for power control. The laser power is monitored using a beam sampler (10B20-01NC.2, Newport) and a power meter (1918-R, Newport), whose reading is converted into the laser power at the back aperture of the microscope objective using a calibration curve. A periscope system raises the beam to the height of the microscope (RM21 microscope, MCL) input port. A Transistor–Transistor Logic (TTL) signal-controlled shutter (SHB1T, Thorlabs) controls the on-off laser exposure. A beam expander built from two cemented achromat lenses (fBE1 = 40 mm, fBE2 = 150 mm) ensures the over-illumination of the objective back aperture to achieve a difrraction-limited beam
+focus. A refkective ND filter (Optical Density (OD) 0:2, NDUV02A, Thorlabs) deflects the laser beam into a $40\times$ dry objective (NA 0:75, MRH00401, Nikon), focused on the sample. The sample is translated using coupled XY Z micro-step motor and piezo stages (MicroStage Series, MCL; NanoLPS200, MCL), with traveling ranges of 20 mm (step motor) 200 $\mathrm{\mu m}$ (piezo). Real-time monitoring of the fabrication is achieved via wide-field imaging, using an LED light source and a CMOS camera (MCE-B013-UW, MighTex). The LED can be placed above the sample (transmission imaging) or below the ND filter (back illumination), using a 50/50 Beam splitter (BPD254S-FS, Thorlabs). A bandpass filter (FSQ- BG39, Newport) protects the camera from laser reflections.
+
+<p align=center>
+  <img width=700 src="https://user-images.githubusercontent.com/111191306/184704471-850db1ce-fd0d-4c15-84e3-b3a9d2cd8fe3.png">
+</p>
+
+<p align=center>
+  Custom-built Two-photon Polymerization (TPP) optical setup diagram. From the fs laser to the beam expander: top-view representation; To the right of the beam expander: side-view representation. The red arrows around the first mirror show that the beam is steered slightly upwards, passing over the mirror on its return from the beam compressor. The shutter and beam expander are elevated from the optical table plane. The beam is raised using a two-mirror periscope (omitted from the figure).
+</p>
+
+
+<a name="how-to-use"/>
+
+## How to use
+
+Establishing communication with the hardware is the first step in any fabrication session. For the sake of facile troubleshooting, the hardware communication is initialized individually for each equipment via the respective "initialize" button. The Python console provides feedback on the communication attempt. Once the software establishes the communication with each hardware, its control buttons become enabled for user action.
+
+For details regarding how to use the GUI, please refer to `doc/RM21-TPP-FabStation-Control_Documentation.pdf`
+
+
+## Publications
+
+<a name="ref-1"/>
+
+\[1\] [Ricardo M. R. Adão, Tiago L. Alves, Christian Maibohm, Bruno Romeira, and Jana B. Nieder, "Two-photon polymerization simulation and fabrication of 3D microprinted suspended waveguides for on-chip optical interconnects," Opt. Express 30, 9623-9642 (2022)](https://doi.org/10.1364/OE.449641)
+
+\[2\] [Beatriz N. L. Costa, Ricardo M. R. Adão, Christian Maibohm, Angelo Accardo, Vanessa F. Cardoso, and Jana B. Nieder, “Cellular Interaction of Bone Marrow Mesenchymal Stem Cells with Polymer and Hydrogel 3D Microscaffold Templates”, ACS Applied Materials & Interfaces, 14 (11), 13013-13024 (2022)](https://doi.org/10.1021/acsami.1c23442)
+
+## Funding
+
+![image](https://user-images.githubusercontent.com/111191306/184507830-0aaa7067-0000-46c9-b29f-a3f04ecd5576.png)
+
+
+CHIPAI_INLPROJECTPAGETitle: ChipAI: Energy-efficient and high-bandwidth neuromorphic nanophotonic Chips for Artificial Intelligence systems
+
+Project Description
+
+The same way the internet revolutionized our society, the rise of Artificial Intelligence (AI) that can learn without the need for explicit instructions is transforming our life. AI uses brain-inspired neural network algorithms powered by computers. However, these central processing units (CPU) are extremely energy inefficient at implementing these tasks. This represents a major bottleneck for energy-efficient, scalable and portable AI systems. Reducing the energy consumption of the massively dense interconnects in existing CPUs needed to emulate complex brain functions is a major challenge.
+
+ChipAI aims at developing a nanoscale photonics-enabled technology capable of delivering compact, high-bandwidth and energy efficiency CPUs using optically interconnected spiking neuron-like sources and detectors. ChipAI will pursue its main goal through the exploitation of Resonant Tunnelling (RT) semiconductor nanostructures embedded in sub-wavelength metal cavities, with dimensions 100 times smaller over conventional devices, for efficient light confinement, emission and detection.
+
+Key elements developed are non-linear RT nanoscale lasers, LEDs, detectors, and synaptic optical links on silicon substrates to make an economically viable technology. This platform will be able to fire and detect neuron-like light-spiking (pulsed) signals at rates 1 billion times faster than biological neurons (>10 GHz per spike rates) and requiring ultralow energy (<10 fJ). This radically new architecture will be tested for spike-encoding information processing towards validation for use in artificial neural networks. This will enable the development of real-time and offline portable AI and neuromorphic (brain-like) CPUs.
+
+In perspective, ChipAI will not only lay the foundations of the new field of neuromorphic optical computing, as will enable new non-AI functional applications in biosensing, imaging and many other fields where masses of cheap miniaturized pulsed sources and detectors are needed.
+
+URL: http://chipai.eu
+
+Start Date: 01 March 2019
+
+End Date: 28 February 2022
+
+Type: H2020-EU.1.2.1. – FET Open
+
+Grant agreement ID: 828841
+
+Funding Agency: Horizon 2020
+
+Funding Programme: FETOPEN-01-2018-2019-2020 – FET-Open Challenging Current Thinking
+
+INL Role: Coordinator (Participant Contact: Bruno Romeira and Nuria Barros)
+
+Partners:
+
+- INL (Portugal)
+- University of Glasgow (UK)
+- University of Strathclyde (UK)
+- Eindhoven University of Technology (NL)
+- Faculty of Sciences (FCiencias.id) University of Lisbon (PT)
+- University of the Balearic Islands (ES)
+- IQE plc (UK),
+- IBM Research Gmbh (CH)
+- Budget Total: € 3, 892, 005.00
+
+Budget INL: € 653, 625.00
+
+<a name="designer-3d"/>
+
+# Designer 3D TPP
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/111191306/184510385-b0e6a4e9-3568-494c-a996-e6c3f66434e3.png">
+</p>
+
+A MATLAB toolbox developed in the frame of the EU-funded FET-Open project Chip-AI (grant n. 828841), for the development of 3D optical waveguides for complexly-interconnected nano-photonic systems such as on-chip artificial neural netwaorks using femtosecond laser-based Two-Photon Polymerization (TPP).
+
+## Features
+- Design 3D structures using MATLAB scripts, to ensure optimal reproducibility and control
+- User-friendly script builder GUI for less experienced MATLABers
+- Use pre-defined macros do define suppor structures with tunable geometry and mesh dimensions
+- Define new macros for your own applications
+- Break large designs into mosaic-segments according to your experimental setup requirements
+- Simulate the polymerized TPP structure depending on your material and experimental setup parameters using `voxelshape_Gauss.m`
+- Export the designs to format-customizable g-code files
+- Import designs from G-CODE files
+- Export designs to [OpenSCAD](http://https://openscad.org/ "OpenSCAD") for better 3D visualization
 
 
 ## Table of Contents
@@ -694,6 +844,8 @@ Partners:
 - Budget Total: € 3, 892, 005.00
 
 Budget INL: € 653, 625.00
+
+
 
 # LoRaComSensors
 
