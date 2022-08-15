@@ -7,3 +7,6 @@
 [submodule "NanoPhotonicsToolbox"]
 	path = (private) NanoPhotonicsToolbox
 	url = https://github.com/R-MR-Adao/NanoPhotonicsToolbox.git
+[submodule "LoRaComSensors"]
+	path = (public) LoRaComSensors
+	url = https://github.com/R-MR-Adao/LoRaComSensors.git
