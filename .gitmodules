@@ -13,3 +13,6 @@
 [submodule "(private) TPP_RM21"]
 	path = (private) TPP_RM21
 	url = https://github.com/R-MR-Adao/TPP_RM21.git
+[submodule "(public) CodinGame"]
+	path = (public) CodinGame
+	url = https://github.com/R-MR-Adao/CodinGame.git
