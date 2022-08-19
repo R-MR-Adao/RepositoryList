@@ -4,11 +4,11 @@ A public list of my private repositories. If you would like to get access to any
 <img src="https://user-images.githubusercontent.com/111191306/184611508-4ac38e85-7886-4444-805b-324178eeb083.gif">
 </p>
 
-This public repository was created as a sharable list of my repositories, here added as clickable submodules. Due to Intellectual Property issues, I cannot publicly share some of those repositoies, so I kindly ask you to contact me if you would like to access any of the private ones:
+This public repository was created as a sharable list of my repositories, here added as clickable submodules. Due to Intellectual Property issues, I cannot publicly share some of those repositories, so I kindly ask you to contact me if you would like to access any of the private ones:
 
 LindeIn: https://www.linkedin.com/in/rmradao/
 
-Below you can find an overview of each repository, built from public data (either my papers or my [Ph.D. disseration](http://hdl.handle.net/11093/3437)).
+Below you can find an overview of each repository, built from public data (either my papers or my [Ph.D. dissertation](http://hdl.handle.net/11093/3437)).
 
 ## Table of Contents
 - [NanoPhotonicsToolbox](#nanophotonicstoolbox)
