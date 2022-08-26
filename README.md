@@ -1,7 +1,7 @@
 # RepositoryList
 A public list of my private repositories. If you would like to get access to any of them, please contact me.
 <p align="center">
-<img src="https://user-images.githubusercontent.com/111191306/184611508-4ac38e85-7886-4444-805b-324178eeb083.gif">
+<img src="https://user-images.githubusercontent.com/111191306/186910047-3463fc94-a189-4b0b-b243-f3bb2c44272e.gif">
 </p>
 
 This public repository was created as a sharable list of my repositories, here added as clickable submodules. Due to Intellectual Property issues, I cannot publicly share some of those repositories, so I kindly ask you to contact me if you would like to access any of the private ones:

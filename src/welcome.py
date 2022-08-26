@@ -73,7 +73,7 @@ blink(colored(center(' Press any key to start'), 'yellow'), 4)
 type_write(line_break(' Thank you for visiting this page!'))
 type_write(line_break(' My name is ' + colored('Ricardo Adão', 'cyan') + ' and I\'m a software developer!'))
 type_write(line_break(' Most of the contents listed on this repository were developed during my PhD, which means that'
-                      ' Intellectual Property ownership writes prevent me from sharing some of my codes publicly'
+                      ' Intellectual Property ownership rights prevent me from sharing some of my codes publicly'
                       '...'))
 print('')
 type_write(line_break(' But don\'t loose hope! I am still able to share my code privately, as long as it is not used'
