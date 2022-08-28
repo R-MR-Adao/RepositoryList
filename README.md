@@ -16,6 +16,7 @@ Below you can find an overview of each repository, built from public data (eithe
 - [TPP RM21](#tpp_rm21)
 - [TPP Designer 3D](#designer-3d)
 - [LoRaComSensors](#loracomsensors)
+- [PRR QRW](#prr_qrw)
 - [CodinGame](#codingame)
 
 
@@ -151,9 +152,11 @@ To calculate the Fluorescence Lifetime image, the software will run the p fittin
 
 \[2\] [Ima Ghaeli,* Ricardo M. R. Adão,* Jana B. Nieder, "CLeANFIT – Contact-Less Axial Nearfield-Based Fluorescence Imaging Topography: A Method for 3D Micro- and Nanotopography Characterization," Advanced Material Interfaces 7, 2000581 (2020). *shared first authorship](https://doi.org/10.1002/admi.202000581)
 
-\[3\] [Ricardo M. R. Adão, Rui Campos, Edite Figueiras, Pedro Alpuim, Jana B. Nieder, "Graphene setting the stage: Tracking DNA hybridization with nanoscale resolution," 2D Materials 6(4), 045056 (2019).](https://doi.org/10.1088/2053-1583/ab41e0)
+\[3\] [Pedro L. Silva, Oleksandr A. Savchuk, Juan Gallo, Lorena García-Hevia, Manuel Bañobre-López and Jana B. Nieder, "Mapping intracellular thermal response of cancer cells to magnetic hyperthermia treatment", Nanoscale, 12, 21647-21656, (2020)](https://doi.org/10.1039/C9NR10370H)
 
-\[4\] [Ana R. Faria, Oscar F. Silvestre, Christian. Maibohm, Ricardo M. R. Adão, Bruno F. B. Silva, and Jana B. Nieder, "Cubosome nanoparticles for enhanced delivery of mitochondria anticancer drug elesclomol and therapeutic monitoring via sub-cellular NAD(P)H multiphoton fluorescence lifetime imaging," Nano Res. 12(1), (2018).](https://doi.org/10.1007/s12274-018-2231-5)
+\[4\] [Ricardo M. R. Adão, Rui Campos, Edite Figueiras, Pedro Alpuim, Jana B. Nieder, "Graphene setting the stage: Tracking DNA hybridization with nanoscale resolution," 2D Materials 6(4), 045056 (2019).](https://doi.org/10.1088/2053-1583/ab41e0)
+
+\[5\] [Ana R. Faria, Oscar F. Silvestre, Christian. Maibohm, Ricardo M. R. Adão, Bruno F. B. Silva, and Jana B. Nieder, "Cubosome nanoparticles for enhanced delivery of mitochondria anticancer drug elesclomol and therapeutic monitoring via sub-cellular NAD(P)H multiphoton fluorescence lifetime imaging," Nano Res. 12(1), (2018).](https://doi.org/10.1007/s12274-018-2231-5)
 
 
 ## Funding
@@ -1011,6 +1014,214 @@ Partners:
 Budget Total: €4, 255, 750.69
 
 Budget INL: €1, 471, 852.35
+
+# PRR_QRW
+
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/111191306/186265433-0eb2ea45-1cd5-408b-8edf-46c4408e4575.png">
+</p>
+
+A demonstrator app implementing Markov Chain-based numerical simulations of the output probabilities (electric field intensity) of Quantum Random Walks (QRW) in series-coupled coupled Photonic Ring Resonators (PRR)
+
+## Features
+- Evaluate and visualize pre-defined PRR QRW examples
+- Use the framework to implement your own PRR systems
+- Perform steady-state and time-domain Classical and Quantum RW simulations
+- Select the sweeping parameters using a simple GUI
+
+## Applications
+<p align="center">
+   <img width = 700 src="https://user-images.githubusercontent.com/111191306/186266618-3217b2b7-c8b5-4afb-8458-3ddfca108d63.png">
+</p>
+
+<p align="center">
+  Random walks in series-coupled ring resonators.
+  (a) Series-coupled multi-ring resonator.
+  $\kappa_i$ and $\alpha$ are the coupling coefficient between each indicated pair of waveguides, and loss coefficient, respectively.
+  The indicated values correspond to a walker moving consecutively from one ring to the next without looping.
+  (b) Graph proposed to model propagation in the series-coupled ring resonators.
+  $k_i = \kappa_i^2$ are the walker hopping probabilities associated with each pair of nodes, where $k_i + t_i = 1$.
+</p>
+
+<p align="center">
+  <img width = 600 src="https://user-images.githubusercontent.com/111191306/186269699-746c5591-0b12-4d89-9386-e75ef96a31c0.png">
+</p>
+
+<p align="center">
+  An example of how to simulate the QRW outputs for a simple pre-defined example with two series-coupled PRRs.
+</p>
+
+## Table of Contents
+- [Graphical User Interface](#gui)
+- [How to setup](#how-to-setup)
+- [How to use](#how-to-use)
+  - [Add custom systems](#add-custom-systems)
+  - [Modify the GUI](#modify-gui)
+- [Example](#example)
+- [Publications](#publications)
+- [Funding](#funding)
+
+<a name="gui"/>
+
+## Graphical User Interface
+
+This app is intended as a compact control center for the quick visualization of RW simulations for PRR system prototyping.
+This enables you to quickly try and tune different parameters such as the number of rings and the coupling coefficients.
+Hence, the developed GUI brings together a minimalist interface that can readily be adapted for other PRR systems.
+A screenshot of the main GUI can be found below, illustrating the different options currently available.
+
+Depending on the number of rings and the sweeping parameters, additional inputsm such as the coupling coefficients or time-limits, may be required from the user.
+This is currently done via input dialogs, as illustrated in the [Applications](#applications) section.
+
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/111191306/186271143-80049bf0-3e52-45bf-a672-cf32fac6d0e0.png">
+<p/>
+
+<a name="how-to-setup"/>
+
+## How to setup
+
+The toolbox is implemented as a series of `.m` scripts, so there is no installation step needed. All you have to do is point MATLAB to the srouce code directory:
+- Open the Home tab of MATLAB's IDE
+- Press "Set path"
+- Press "Add with Subfolders"
+- Select all folders except `.git`
+- Press "Save" &rarr; "Close"
+- Call `PRR_QRW` on the command window. The GUI will open
+
+
+## How to use
+
+Running pre-defined examples should be straightforward, and an example is show in the [Applications](#applications) section.
+However, the most interesting feature of this tool is the framework in which you can define new simulation scenarios.
+Hence, the following shows how to implement the RW simulations for custom systems and adapting the GUI accordingly, so the results can be tested and visualized in the same manner as the pre-defined examples.
+
+<a name="add-custom-systems"/>
+
+### Add custom systems
+
+Custom PRR systems can be modelled by editing the `CRW_sweep()` function in `src/RW/CRW_sweep.m`
+To execute a given system, the following parameters must be defined:
+ - `RWc`: random walk command which specified which RW function shall be executed
+ - `th` : coherent theta array. This can be imported from the sweep parameters KT or set to zero
+ - `Tf` : transfer function matrix. A function handle that implements the specified RW transfer function
+ - sweep parameters (example):
+    - `v1` : sweep variable 1 (iterated over jj in main function)
+    - `v2` : sweep variable 2 (iterated over kk in main function)
+    - `vf` : fixed parameter
+ - `Tc` : transfer command. A string that encodes the function call of `Tf` to be evaluated in main function
+ - `vars` : sweep variable data. A cell array containing `v1` and `v2`, and the respective labels to be shown in output plot
+
+Each of these parameters can be specified according to the user-defined settings in the GUI, and need only be fitted within the corresponding random walk mode, number of rings, and variable sweep config inside the `CRW_sweep()` `switch` selector.
+
+The following pseudocode illustrates the structure of this `CRW_sweep()`.
+A concrete example for the simple single-ring QRW system, sweeping over `k1` and `k2` is shown in the [Example](#example) section
+
+```matlab
+function [Thru,Drop,vars] = CRW_sweep(KT,Nw,nRings,sweepMode,RWmode)
+    % [Thru,Drop] = CRW_sweep(KT,Nw,nRings,sweepMode)
+    % Performs a 2D sweep over the random walk parameters
+    % Inputs:
+    %   KT        = sweep variables
+    %   Nw        = number of walks (if RW mode is simulation)
+    %   nRings    = number of rings
+    %   sweepMode = sweep variable config
+    %   RWmode    = randomwalk mode
+    
+    switch RWmode
+        case {'Quantum','Classic'}
+            switch nRings                    % Define transfer variables 
+                case 1
+                    switch RWmode
+                        case 'Quantum'
+                            RWc = 'QRW(T)';              % random walk command
+                            th = KT.th;                  % roherent phase array
+                            Tf = @(k1,k2,t1,t2,th) [...] % transfer function matrix
+                            
+                        case 'Classic'
+                            RWc = 'CRW(T)';              % random walk command
+                            th = 0;                      % no phase
+                            Tf = @(k1,k2,t1,t2,th) [...] % transfer function matrix
+                            
+                    end
+                    switch sweepMode
+                        case 'x,y'                       % sweep over x and y parameters
+                            v1 = x;                      % Sweeping variable 1
+                            v2 = y;                      % Sweeping variable 2
+                            vf = getValue()              % get fixe parameter from user
+                                                         % Transfer command (string)
+                            Tc = ['Tf(x(jj),'...         % sweep variable 1 (jj)
+                                     'y(kk),'...         % sweep variable 2 (kk)
+                                     'x_(jj),'...        % sweep variable 1 complementary (jj)
+                                     'y_(kk),'...        % sweep variable 1 complementary (jj)
+                                     'vf)'];             % fixed parameter
+                                                         % sweep variables
+                            vars = {x.^2,...             % sweep array 1
+                                    y.^2,...             % sweep array 2
+                                    'x^2',...            % sweep variable 1 label
+                                    'y^2'};              % sweep variable 2 label
+                    end
+            end
+    end
+end
+```
+
+
+<a name="modify-gui"/>
+
+### Modify the GUI
+
+If custom RW systems are added to `PRR_QRW`, their configurations should appear in the GUI. Hence, the GUI drawing functions must be adapted accordingly in `src/PRR_GUI.m`.
+This includes modifying the `initInterface()` function for the new options to appwar, and potentially adding new rules to the drop-down menu callbacks (i.e., `nRings_Callback()`, `sweepMode_Callback()`, `run_enable()`) to guide the user towards the suitable configurations for your system.
+
+## Example
+
+The following code shows the implementation within `CRW_sweep()` for the pre-defined use case of a QRW in a single-ring system, sweeping over `k1` and `k2`, with a fixed `th`:
+
+```matlab
+switch nRings                               % number of rings
+    case 1
+        switch RWmode                       % random walk mode
+            case 'Quantum'
+                RWc = 'QRW(T)';             % random walk command
+                th = KT.th;                 % coherent phase array
+                Tf = @(k1,k2,t1,t2,th) [... % transfer matric
+                    [0;-k1;0;0;t1],...
+                    [0;0;t2*exp(1i*th/2);k2*exp(1i*th/2);0],...
+                    [0;t1*exp(1i*th/2);0;0;k1*exp(1i*th/2)],...
+                    [0;0;0;1;0],...
+                    [0;0;0;0;1]];
+        end
+         switch sweepMode                   % sweep mode
+             case 'k1,k2'
+                v1 = k1;                    % sweep variable 1
+                v2 = k2;                    % sweep variable 2
+                if strcmp(RWmode,'Quantum')
+                    th = getValue('theta'); % get fixed variable
+                end
+                Tc = 'Tf(k1(jj),k2(kk),t1(jj),t2(kk),th)'; % transfer command
+                vars = {k1.^2,k2.^2,'k_1^2','k_2^2'}; % variables and labels
+         end
+```
+
+![image](https://user-images.githubusercontent.com/111191306/186271569-72e86057-d962-46c4-b6a3-955e13d20569.png)
+
+## Publications
+
+<a name="ref-1"/>
+
+\[1\] [Ricardo M. R. Adão, Manuel Caño-García, Jana B. Nieder, Ernesto F. Galvão. "Quantum random walks in coupled photonic ring resonators," 
+quant-ph>arXiv:2203.01719 (2021)](https://doi.org/10.48550/arXiv.2203.01719)
+
+## Funding
+
+![image](https://user-images.githubusercontent.com/111191306/186270914-728ac6b0-0919-46fe-8688-4593ee18d068.png)
+
+
+2019 INL Internal Seed Grant
+
+“Coherent light propagation in photonic quantum walk chips”
+
 
 # CodinGame
 
