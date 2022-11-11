@@ -22,3 +22,6 @@
 [submodule "(public) EmbeddedSoftware-Coursera"]
 	path = (public) EmbeddedSoftware-Coursera
 	url = https://github.com/R-MR-Adao/EmbeddedSoftware-Coursera.git
+[submodule "(public) ADAS_SimWorld"]
+	path = (public) ADAS_SimWorld
+	url = https://github.com/R-MR-Adao/ADAS_SimWorld.git
