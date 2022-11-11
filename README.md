@@ -29,7 +29,7 @@ SimWorld is a synthetic data generation tool for the simulation of sensor-based 
 It was designed for mainly for didactic purposes, and the prototyping of simple detection and tracking algorithms. 
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_basic.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_basic.gif" />
 </p>
 
 ## Table Contents
@@ -67,7 +67,7 @@ As the ego vehicle progresses through the road, it comes across both stationary 
 This tool provides a simple Graphical User Interface (GUI), which offers a visualization of the real-time simulated world, the object detections in each of the surrounding four sensors' field of view, and a text editor to implement the tracking algorithm code. 
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/pictures/ADAS_SimWorld_RoadMapTopView.png" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/pictures/ADAS_SimWorld_RoadMapTopView.png" />
 </p>
 
 ## Graphical User Interface
@@ -80,7 +80,7 @@ The GUI is divided into 5 components, as illustrated in the figure below:
  5. [Speedometer widget](#speedometer-widget)
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/pictures/ADAS_SimWorld_GUI.png" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/pictures/ADAS_SimWorld_GUI.png" />
 </p>
 
 ### Main control panel
@@ -91,7 +91,7 @@ These include toggling over the active sensors, and setting a few render paramet
 The sensor activation/deactivation is illustrated in the video below. 
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_GUI_chooseSensors.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_GUI_chooseSensors.gif" />
 </p>
 
 ### Simulation visualizations
@@ -100,7 +100,7 @@ These allow setting the 3D perspective view over the simulation space.
 The video below illustrates how the four sliders surrounding the 3rd person simulation visualization panel can be used to control the zoom (top slider), tilt (right slider), pan (left slider) and rotation (bottom slider). 
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_GUI_views.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_GUI_views.gif" />
 </p>
 
 ### User code editor
@@ -116,7 +116,7 @@ The GUI is prepared to host more than one code file to implement different funct
 More information on the implementations can be found in [User solutions](#user-solutions) section.
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_userCode.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_userCode.gif" />
 </p>
 
 ### Speedometer widget
@@ -126,7 +126,7 @@ A simple speedometer widget is included as part of the base software as an examp
 In this case, this speedometer displays the instant ego speed in km/h, as well as the cumulative traveled distance.
 
 <p align="center">
-<img width=250 src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_widgetSpeedometer.gif" />
+<img width=250 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_widgetSpeedometer.gif" />
 </p>
 
 ## Data generation model
@@ -240,7 +240,7 @@ where the $s$ dependencies on the right side of the equals sign are omitted for 
 The figure below illustrates the lane widening obtained using the equations above.
 
 <p align="center">
-<img width=700 src="(public) ADAS_SimWorld/doc/pictures/ADAS_SimWorld_model_roadLane.png">
+<img width=700 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/pictures/ADAS_SimWorld_model_roadLane.png">
 </p>
 
 As shown ahead in the [Time progression](#time-progression) section, $F_\mathrm{lane}(s)$ is used not only to draw the road edges, but also to define the trajectory of each moving object.
@@ -314,7 +314,7 @@ The video below illustrates the result of this time progression scheme for all o
 The ego vehicle is represented by a red circle.
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_model_timeProgression.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_model_timeProgression.gif" />
 </p>
 
 As the video shows, objects move continuously along the periodic road (an object moving out of one end of the map comes back from the opposite one).
@@ -412,7 +412,7 @@ The latter is addressed in more detail in the [3rd person perspective](#3rd-pers
 The application of $\mathcal{R}(\theta,P)$ is illustrated the video below.
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/videos/ADAS_SimWorld_model_Rotation.gif" />
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/videos/ADAS_SimWorld_model_Rotation.gif" />
 </p>
 
 ### 3rd person perspective
@@ -462,7 +462,7 @@ where $j = \{\mathrm{stand},\ \mathrm{mov}\}$.
 The figure below illustrates both the orientation and position rotation around the ego vehicle performed to obtain the 3rd person's perspective view.
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc\pictures\ADAS_SimWorld_model_3rdPersonPerspective.png"/>
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc\pictures\ADAS_SimWorld_model_3rdPersonPerspective.png"/>
 </p>
 
 Including the road periodicity in this representation is obtained by always rendering half a road-length ahead and behind of the ego vehicle, while each object's position is represented always within the load length range (remember that in this perspective the ego is represented as stationary at $(0,0,0)$ ).
@@ -496,7 +496,7 @@ $$
 The figure below illustrates the difference between the typical single-peaked 2D Gaussian function, and the SimWorld road-Gaussian
 
 <p align="center">
-<img width=800 src="(public) ADAS_SimWorld/doc\pictures\ADAS_SimWorld_model_3DTerrain.png"/>
+<img width=800 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc\pictures\ADAS_SimWorld_model_3DTerrain.png"/>
 </p>
 
 Yet, since the road is by convention of the current implementation restricted to the $XY$ plane ( $f_\mathrm{road}^{(z)}(s) = 0$ ), the terrain topography is effectively obtained by
@@ -556,7 +556,7 @@ $$
 and only the azimuth range is considered, as illustrated in the figure blow.
 
 <p align="center">
-<img src="(public) ADAS_SimWorld/doc/pictures/ADAS_SimWorld_model_sensorDetections.png"/>
+<img src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/pictures/ADAS_SimWorld_model_sensorDetections.png"/>
 </p>
 
 
@@ -687,7 +687,7 @@ ADAS SimWorld software architecture can be split into two main parts: the initia
 The initialization architecture is done in a straightforward manner, as depicted in the diagram below.
 
 <p align="center">
-<img width=800 src="(public) ADAS_SimWorld/doc/diagrams/ADAS_SimWorld_architecture_initialization.png"/>
+<img width=800 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/diagrams/ADAS_SimWorld_architecture_initialization.png"/>
 </p>
 
 Once all function handles are initialized, all interactions with the simulation tool are done via the GUI.
@@ -699,7 +699,7 @@ When the `Start` or `Step` buttons are called from the GUI, the simulation prope
 The process is repeated as long as the play button is in a pressed state.
 
 <p align="center">
-<img width=700 src="(public) ADAS_SimWorld/doc/diagrams/ADAS_SimWorld_architecture_SimulationRun.png"/>
+<img width=700 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/diagrams/ADAS_SimWorld_architecture_SimulationRun.png"/>
 </p>
 
 ### SimWorld inhabitants
@@ -707,7 +707,7 @@ The process is repeated as long as the play button is in a pressed state.
 The three types of SimWorld objects can be distinguished by their shape and color, as shown in the figure below.
 
 <p align="center">
-<img width=600 src="(public) ADAS_SimWorld/doc/pictures/ADAS_SimWorld_Objects.png"/>
+<img width=600 src="https://github.com/R-MR-Adao/ADAS_SimWorld/blob/master/doc/pictures/ADAS_SimWorld_Objects.png"/>
 </p>
 
 Apart from the _moving_ and _oncoming_ objects, which are both of the type moving object, each object type has unique properties, as listed below:
