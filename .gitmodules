@@ -17,7 +17,7 @@
 	path = (public) CodinGame
 	url = https://github.com/R-MR-Adao/CodinGame.git
 [submodule "(public) PRR_QRW"]
-	path = (public) PRR_QRW
+	path = (private) PRR_QRW
 	url = https://github.com/R-MR-Adao/PRR_QRW.git
 [submodule "(public) EmbeddedSoftware-Coursera"]
 	path = (public) EmbeddedSoftware-Coursera
